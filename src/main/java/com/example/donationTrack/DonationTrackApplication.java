@@ -1,5 +1,6 @@
 package com.example.donationTrack;
 
+import com.example.donationTrack.entity.Donor;
 import com.example.donationTrack.repository.DonateRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -23,6 +24,7 @@ private static final Logger logger = LoggerFactory.getLogger(DonationTrackApplic
 
 	@Override
 	public void run(String... args) throws Exception {
+		Donor donor = new Donor();
 
 	}
 }
