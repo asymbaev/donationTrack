@@ -31,4 +31,13 @@ public class donorController {
         return new ResponseEntity<>(donorService.addDonor(donor), HttpStatus.CREATED);
 
     }
+    @DeleteMapping("/delete/{id}")
+    public ResponseEntity<Donor> deleteDonorById(@PathVariable Long id) {
+        donorService.deleteDonorById(id);
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+    }
+    @PutMapping("/{id}")
+    public ResponseEntity<Donor> updateDonorById (@PathVariable Long id, @RequestBody Donor donor) {
+        return new ResponseEntity<>(donorService.updateDonorById(id, donor), HttpStatus.ACCEPTED);
+    }
 }

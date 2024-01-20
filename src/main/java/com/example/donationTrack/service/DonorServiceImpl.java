@@ -36,4 +36,20 @@ public class DonorServiceImpl implements DonorService {
     public Donor addDonor(Donor donor) {
         return donorRepository.save(donor);
     }
+
+    @Override
+    public void deleteDonorById(Long id) {
+        donorRepository.deleteById(id);
+
+    }
+
+    @Override
+    public Donor updateDonorById(Long id, Donor donor) {
+        Donor existingDonor = getDonorById(id);
+        existingDonor.setDonorID(donor.getDonorID());
+        existingDonor.setFirstName(donor.getFirstName());
+        existingDonor.setLastName(donor.getLastName());
+        donorRepository.save(existingDonor);
+        return existingDonor;
+    }
 }

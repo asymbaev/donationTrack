@@ -11,4 +11,8 @@ public interface DonorService {
 
     public Donor getDonorById(Long id);
     public Donor addDonor(Donor donor);
+
+    void deleteDonorById(Long id);
+
+    Donor updateDonorById(Long id, Donor donor);
 }
