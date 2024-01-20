@@ -45,6 +45,7 @@ public class DonationServiceImpl implements DonationService {
     @Override
     public Donation updateDonationById(Long id, Donation donation) {
         Donation existingDonation = getDonationById(id);
+        existingDonation.setCharity(donation.getCharity());
         existingDonation.setReport(donation.getReport());
         existingDonation.setHistory(donation.getHistory());
         existingDonation.setCategory(donation.getCategory());
