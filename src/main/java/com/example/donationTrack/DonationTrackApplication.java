@@ -2,8 +2,10 @@ package com.example.donationTrack;
 
 import com.example.donationTrack.entity.Donation;
 import com.example.donationTrack.entity.Donor;
+import com.example.donationTrack.entity.User;
 import com.example.donationTrack.repository.DonationRepository;
 import com.example.donationTrack.repository.DonorRepository;
+import com.example.donationTrack.repository.UserRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +23,8 @@ public class DonationTrackApplication implements CommandLineRunner {
 
 	@Autowired
 	private DonorRepository donorRepository;
+	@Autowired
+	private UserRepository userRepository;
 
 private static final Logger logger = LoggerFactory.getLogger(DonationTrackApplication.class);
 
@@ -42,6 +46,9 @@ private static final Logger logger = LoggerFactory.getLogger(DonationTrackApplic
 
 		);
 		donationRepository.saveAll(donors);
+
+		userRepository.save(new User("user", "$2y$10$v5IaouonYHihY41a9CSrL.oumcpe5Q/Ib1/6yRqVNHhWtUD16GhVe","USER"));
+		userRepository.save(new User("admin", "$2y$10$QwbFl035avp6t7MFv8PSkOi3Ux.h7SHRLzc7sB5qKxHkY9akSrsRC","ADMIN"));
 
 		donationRepository.findAll().forEach(don ->logger.info(don.getCategory()+ " " + don.getAmount()));
 		donorRepository.findAll().forEach(d -> logger.info(d.getFirstName() + " " + d.getLastName()));
